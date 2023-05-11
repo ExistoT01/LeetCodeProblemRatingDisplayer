@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LeetCode problems rating displayer
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.2.1
 // @description  Display LeetCode problems rating
 // @author       ExistoT01
 // @match        https://leetcode.cn/problems/*

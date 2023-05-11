@@ -4,6 +4,12 @@
 
 自用阶段，满足个人需求，看情况更新
 
+## 效果
+在题目页的标题下显示一行元素来表示当前题目难度
+
+![image-20230511140139783](https://expicture.oss-cn-beijing.aliyuncs.com/img/202305111401240.png)
+
+
 ## 使用方式
 
 添加到TamperMonkey即可
