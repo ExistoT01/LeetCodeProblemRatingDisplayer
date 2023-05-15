@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LeetCode problems rating displayer
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.2
 // @description  Display LeetCode problems rating
 // @author       ExistoT01
 // @match        https://leetcode.cn/problems/*
@@ -13,10 +13,10 @@
 const dataUrl = "https://zerotrac.github.io/leetcode_problem_rating/data.json";
 
 const titleSelector =
-  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div > div.w-full.px-5.pt-4 > div > div:nth-child(1) > div.flex-1 > div > div > span";
+  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div:nth-child(1) > div.flex-1 > div > div > span";
 
 const containerSelector =
-  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div > div.w-full.px-5.pt-4 > div > div:nth-child(1) > div.flex-1 > div > div";
+  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div:nth-child(1) > div.flex-1";
 
 const shwoRating = () => {
   // Get the problem ID from the URL
