@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LeetCode problems rating displayer
 // @namespace    http://tampermonkey.net/
-// @version      0.2.2
+// @version      0.2.3
 // @description  Display LeetCode problems rating
 // @author       ExistoT01
 // @match        https://leetcode.cn/problems/*
@@ -13,10 +13,13 @@
 const dataUrl = "https://zerotrac.github.io/leetcode_problem_rating/data.json";
 
 const titleSelector =
-  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div:nth-child(1) > div.flex-1 > div > div > span";
+  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div:nth-child(1) > div.flex-1 > div > span";
 
 const containerSelector =
-  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div:nth-child(1) > div.flex-1";
+  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div";
+
+const toolbarSelector =
+  "#qd-content > div.h-full.flex-col.ssg__qd-splitter-primary-w > div > div > div > div.flex.h-full.w-full.overflow-y-auto.rounded-b > div > div > div.w-full.px-5.pt-5 > div > div.mt-3.flex.space-x-4";
 
 const shwoRating = () => {
   // Get the problem ID from the URL
@@ -38,9 +41,12 @@ const shwoRating = () => {
 
       const ratingElement = document.createElement("p");
       ratingElement.classList = document.querySelector(titleSelector).classList;
-
       ratingElement.textContent = `「Problem Rating」: ${problemRating}`;
-      document.querySelector(containerSelector).appendChild(ratingElement);
+
+      const toolbar = document.querySelector(toolbarSelector);
+      document
+        .querySelector(containerSelector)
+        .insertBefore(ratingElement, toolbar);
     })
     .catch((error) => console.error(error));
 };
