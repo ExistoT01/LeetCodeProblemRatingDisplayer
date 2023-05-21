@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LeetCode problems rating displayer
 // @namespace    http://tampermonkey.net/
-// @version      0.2.3
+// @version      0.3.0
 // @description  Display LeetCode problems rating
 // @author       ExistoT01
 // @match        https://leetcode.cn/problems/*
@@ -34,19 +34,13 @@ const shwoRating = () => {
       let problemRating;
       if (problem === undefined) {
         console.log("problem not find");
-        problemRating = undefined;
+        problemRating = "Not Found";
       } else {
         problemRating = parseFloat(problem.Rating).toFixed(2);
       }
 
-      const ratingElement = document.createElement("p");
-      ratingElement.classList = document.querySelector(titleSelector).classList;
-      ratingElement.textContent = `「Problem Rating」: ${problemRating}`;
-
       const toolbar = document.querySelector(toolbarSelector);
-      document
-        .querySelector(containerSelector)
-        .insertBefore(ratingElement, toolbar);
+      toolbar.childNodes[0].textContent += `: ${problemRating}`;
     })
     .catch((error) => console.error(error));
 };
